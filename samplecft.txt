@@ -1,0 +1,111 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+
+  "Description": "Create User table in DynamoDB",
+
+  "Parameters": {
+    "ReadCapacityUnits": {
+      "Description": "Provisioned read throughput",
+      "Type": "Number",
+      "Default": "1",
+      "MinValue": "1",
+      "MaxValue": "100",
+      "ConstraintDescription": "must be between 5 and 10000"
+    },
+
+    "WriteCapacityUnits": {
+      "Description": "Provisioned write throughput",
+      "Type": "Number",
+      "Default": "1",
+      "MinValue": "1",
+      "MaxValue": "100",
+      "ConstraintDescription": "must be between 5 and 10000"
+    }
+  },
+
+  "Resources": {
+    "Users1": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "UserName",
+            "KeyType": "HASH"
+          }
+        ],
+    
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "UserName",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": { "Ref": "ReadCapacityUnits" },
+          "WriteCapacityUnits": { "Ref": "WriteCapacityUnits" }
+        }
+      }
+    },
+	
+	"Users2": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "UserName",
+            "KeyType": "HASH"
+          }
+        ],
+    
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "UserName",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": { "Ref": "ReadCapacityUnits" },
+          "WriteCapacityUnits": { "Ref": "WriteCapacityUnits" }
+        }
+      }
+    },
+	
+	"Users3": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "UserName",
+            "KeyType": "HASH"
+          }
+        ],
+    
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "UserName",
+            "AttributeType": "S"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": { "Ref": "ReadCapacityUnits" },
+          "WriteCapacityUnits": { "Ref": "WriteCapacityUnits" }
+        }
+      }
+    }
+  },
+ 
+   "Outputs" : {
+     "Table1" : {
+       "Value" : {"Ref" : "Users1"},
+       "Description" : "Name of the newly created DynamoDB table"
+     },
+	 "Table2" : {
+       "Value" : {"Ref" : "Users2"},
+       "Description" : "Name of the newly created DynamoDB table"
+     },
+	 "Table3" : {
+       "Value" : {"Ref" : "Users3"},
+       "Description" : "Name of the newly created DynamoDB table"
+     }
+   }
+}
