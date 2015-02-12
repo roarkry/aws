@@ -32,7 +32,7 @@
       "Type": "AWS::EC2::Instance",
       "Properties": {
         "DisableApiTermination": "FALSE",
-        "ImageId": "ami-db2400eb",
+        "ImageId": "ami-4983d779",
         "InstanceType": { "Ref" : "InstanceType" },
         "KeyName": "fintalk",
         "Monitoring": "false",
